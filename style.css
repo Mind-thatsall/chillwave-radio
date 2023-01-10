@@ -3,10 +3,69 @@
     padding: 0;
 }
 
+body {
+    background: url('./backgrounds/backgroundone.gif') no-repeat;
+    background-size: cover;
+    background-position-y: 20%;
+    padding: 1vh 2vh;
+    overflow: hidden;
+    color: white;
+    height: 100vh;
+}
+
 #player {
     width: 100vw;
     height: 100vh;
     visibility: none;
     position: absolute;
     left: -100%;
+    z-index: -1;
+}
+
+.informations__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 98%;
+}
+
+.box {
+    background-color: rgba(0, 0, 0, 0.232);
+    width: fit-content;
+    padding: 1vh 2vh;
+    backdrop-filter: blur(10px);
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.informations__content--status {
+    font-size: 2.5vh;
+}
+
+.informations__content--credit {
+    font-size: 2.5vh;
+}
+
+.phone {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .phone {
+        display: block;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .informations__content--volume {
+        display: none;
+    }
+    
 }
