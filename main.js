@@ -13,8 +13,8 @@ const radios = {
 	1: "roABNwbjZf4",
 	2: "-9gEgshJUuY",
 	3: "aGSYKFb_zxg",
-    4: '7tNtU5XFwrU',
-    5: '6qYTQI8FqzQ'
+	4: "7tNtU5XFwrU",
+	5: "6qYTQI8FqzQ",
 };
 
 var player;
@@ -57,29 +57,34 @@ let videoData;
 const statusTextDesktop = document.querySelector(".desktop");
 const statusTextPhone = document.querySelector(".phone");
 const volume = document.querySelector(".informations__content--volume");
+const controls = document.querySelector(".informations__content--controls");
 const credit = document.querySelector(".informations__content--credit");
 const playerIframe = document.querySelector("iframe");
 
 function handleArrows(e) {
-	if (e.key === "ArrowRight") {
-		goNext();
-	} else if (e.key === "ArrowLeft") {
-		goPrevious();
-	} else if (e.key === "ArrowUp") {
-		player.setVolume(player.getVolume() + 5);
-	} else if (e.key === "ArrowDown") {
-		player.setVolume(player.getVolume() - 5);
-	} else if (e.key === " " && player.playVideo) {
+	if (e.key === " " && player.playVideo) {
 		StartOrPause();
 	}
 
-	setTimeout(() => {
-		if (player.getPlayerState() !== 2) {
-			volume.innerText = `Volume: ${player.getVolume()}%`;
-		} else {
-			volume.innerText = `Radio paused`;
+	if (isPlaying) {
+		if (e.key === "ArrowRight") {
+			goNext();
+		} else if (e.key === "ArrowLeft") {
+			goPrevious();
+		} else if (e.key === "ArrowUp") {
+			player.setVolume(player.getVolume() + 5);
+		} else if (e.key === "ArrowDown") {
+			player.setVolume(player.getVolume() - 5);
 		}
-	}, 50);
+
+		setTimeout(() => {
+			if (player.getPlayerState() !== 2) {
+				volume.innerText = `Volume: ${player.getVolume()}% | Up and Down arrow keys for volume.`;
+			} else {
+				volume.innerText = `Radio paused`;
+			}
+		}, 50);
+	}
 }
 
 let initY;
@@ -114,9 +119,14 @@ function getStatus() {
 		});
 	} else if (player.getPlayerState() === 1) {
 		videoData = player.getVideoData();
-        console.log(videoData);
-		statusTextDesktop.innerHTML = `Listening - <a href=${player.getVideoUrl()} target='_blank'>${videoData.title}</a>`;
-		statusTextPhone.innerHTML = `Listening - <a href=${player.getVideoUrl()} target='_blank'>${videoData.title}</a>`;
+		console.log(videoData);
+		statusTextDesktop.innerHTML = `Listening - <a href=${player.getVideoUrl()} target='_blank'>${
+			videoData.title
+		}</a>`;
+		statusTextPhone.innerHTML = `Listening - <a href=${player.getVideoUrl()} target='_blank'>${
+			videoData.title
+		}</a>`;
+		controls.innerText = 'You can use your left and right arrow keys to change radios.';
 		credit.innerText = `Credit Music - ${videoData.author}`;
 	}
 }
@@ -126,6 +136,7 @@ function StartOrPause() {
 		player.playVideo();
 		isPlaying = true;
 		volume.classList.add("box");
+		controls.classList.add('box');
 		credit.classList.add("box");
 	} else {
 		player.pauseVideo();

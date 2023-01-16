@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@0;1&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -30,17 +32,20 @@ body {
 }
 
 .box {
-    background-color: rgba(0, 0, 0, 0.232);
+    background-color: rgba(0, 0, 0, 0.2);
     width: fit-content;
     padding: 1vh 2vh;
     backdrop-filter: blur(10px);
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 a {
-    color: white;
+    color: rgba(255, 255, 255, 0.774);
     text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: italic;
 }
 
 .informations__content--status {
@@ -55,6 +60,10 @@ a {
     display: none;
 }
 
+.informations__content--controls {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
     .phone {
         display: block;
@@ -67,5 +76,8 @@ a {
     .informations__content--volume {
         display: none;
     }
-    
+
+    .informations__content--controls {
+        display: none;
+    }
 }
