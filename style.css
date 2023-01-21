@@ -20,6 +20,7 @@ body {
 	margin: 2vh 3vh;
 	font-family: "Josefin Sans";
 	font-weight: bold;
+    text-shadow: 0px 0px 1vh #0f0f0f;
 }
 
 .cover {
@@ -77,7 +78,7 @@ body {
     border-radius: 50%;
 	filter: blur(1vh);
     opacity: 0;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease, background-color 0.25s ease;
 }
 
 .radios {
@@ -128,6 +129,7 @@ body {
 	border-radius: 50%;
 	filter: blur(10vh);
     opacity: 0.4;
+    transition: background-color 0.25s ease;
 }
 
 .play-pause-btn {

@@ -100,8 +100,8 @@ playpauseButtons.forEach((button) => {
 
 let previousTarget;
 function handlePlayKeyboard(e) {
-	e.preventDefault();
 	if (player.playVideo && e.key === ' ') {
+		e.preventDefault();
 		const btn = document.getElementById(`${i}`);
 		i = btn.id;
 
