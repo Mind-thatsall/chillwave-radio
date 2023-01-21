@@ -242,11 +242,17 @@ input[type="range"]::-moz-range-thumb {
 
 	.right-box {
 		width: 100%;
-		position: fixed;
+		position: absolute;
+		height: 100%;
+		overflow: hidden;
 	}
 
 	.currently-playing {
 		width: 100%;
 		font-size: 8vh;
+	}
+
+	.accent-circle {
+		right: -55%;
 	}
 }
