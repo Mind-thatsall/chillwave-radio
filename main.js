@@ -91,12 +91,18 @@ const credit = document.querySelector(".credit-channel");
 const radioName = document.querySelector(".currently-playing");
 const goto = document.querySelector(".gotochannel");
 const playpauseButtons = document.querySelectorAll(".play-pause-btn");
+const volume = document.querySelector("#volume");
 
 document.addEventListener("keydown", handlePlayKeyboard);
 playpauseButtons.forEach((button) => {
 	button.addEventListener("click", handlePlayClick);
 	button.checked = false;
 });
+volume.addEventListener('input', handleVolume);
+
+function handleVolume(e) {
+	player.setVolume(e.target.valueAsNumber);
+}
 
 let previousTarget;
 function handlePlayKeyboard(e) {
@@ -120,6 +126,7 @@ function handlePlayKeyboard(e) {
 }
 
 function handlePlayClick(e) {
+	console.log(e);
 	if (player.playVideo) {
 		i = e.target.id
 			? e.target.id

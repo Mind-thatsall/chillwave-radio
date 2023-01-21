@@ -1,41 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://chillwave-radio.vercel.app/">
-    <meta property="og:title" content="Multi Radio - mind">
-    <meta property="og:description" content="A multitude of radios to chill, study or play.">
-    <meta property="og:image" content="https://i.pinimg.com/564x/c0/28/97/c028977a22663a95647b4e970e9a2902.jpg">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>multiradio - mind</title>
-    <link rel="stylesheet" href="style.css">
-    
-</head>
-<body>
-    <div class="informations__container">
-        <div class="left-box">
-            <h1 class="logo">multi-radios</h1>
-            <img class='cover' src='./assets/space.webp' alt=""></div>
-        <div class="right-box">
-            <div class="accent-circle"></div>
-            <div class='player-actions'>
-                <h3 class="credit-channel"><a class="gotochannel" href=""></a></h3>
-                <h2 class="currently-playing">NO RADIO PLAYING</h2>
-                <div class="radios">
-                    <p><input type="checkbox" id="0" class="play-pause-btn" /> 1 - Space Lofi Hip-Hop Radio</p>
-                    <p><input type="checkbox" id="1" class="play-pause-btn" /> 2 - Tavern/Inn Radio</p>
-                    <p><input type="checkbox" id="2" class="play-pause-btn" /> 3 - Japanese Lofi Radio</p>
-                    <p><input type="checkbox" id="3" class="play-pause-btn" /> 4 - Good Vibes Only Hip-Hop Radio</p>
-                    <p><input type="checkbox" id="4" class="play-pause-btn" /> 5 - NCS Radio</p>
-                    <p><input type="checkbox" id="5" class="play-pause-btn" /> 6 - Cyberpunk Radio</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="player"></div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://chillwave-radio.vercel.app/" />
+		<meta property="og:title" content="Multi Radio - mind" />
+		<meta
+			property="og:description"
+			content="A multitude of radios to chill, study or play." />
+		<meta
+			property="og:image"
+			content="https://i.pinimg.com/564x/c0/28/97/c028977a22663a95647b4e970e9a2902.jpg" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>multiradio - mind</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="informations__container">
+			<div class="left-box">
+				<h1 class="logo">multi-radios</h1>
+				<img class="cover" src="./assets/space.webp" alt="" />
+				<div class="box-volume">
+					<p>Volume :</p>
+					<input
+						type="range"
+						name=""
+						id="volume"
+						class="styled-slider slider-progress" min="0" max="100" value="50" />
+				</div>
+			</div>
+			<div class="right-box">
+				<div class="accent-circle"></div>
+				<div class="player-actions">
+					<h3 class="credit-channel"><a class="gotochannel" href=""></a></h3>
+					<h2 class="currently-playing">NO RADIO PLAYING</h2>
+					<div class="radios">
+						<div>
+							<span>
+								<input type="checkbox" id="0" class="play-pause-btn" />
+								1 - Space Lofi Hip-Hop Radio
+							</span>
+						</div>
+						<div>
+							<span>
+								<input type="checkbox" id="1" class="play-pause-btn" />
+								2 - Tavern/Inn Radio
+							</span>
+						</div>
+						<div>
+							<span>
+								<input type="checkbox" id="2" class="play-pause-btn" />
+								3 - Japanese Lofi Radio
+							</span>
+						</div>
+						<div>
+							<span>
+								<input type="checkbox" id="3" class="play-pause-btn" />
+								4 - Good Vibes Only Hip-Hop Radio
+							</span>
+						</div>
+						<div>
+							<span>
+								<input type="checkbox" id="4" class="play-pause-btn" />
+								5 - NCS Radio
+							</span>
+						</div>
+						<div>
+							<span>
+								<input type="checkbox" id="5" class="play-pause-btn" />
+								6 - Cyberpunk Radio
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="player"></div>
 
-    <script src="./main.js"></script>
-</body>
+		<script src="./main.js"></script>
+	</body>
 </html>
