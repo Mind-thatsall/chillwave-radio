@@ -9,12 +9,48 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //    after the API code downloads.
 
 const radios = {
-	0: "Qt0-9mO-ZXY",
-	1: "roABNwbjZf4",
-	2: "-9gEgshJUuY",
-	3: "aGSYKFb_zxg",
-	4: "7tNtU5XFwrU",
-	5: "6qYTQI8FqzQ",
+	0: {
+		id: "Qt0-9mO-ZXY",
+		bg: "./assets/space.webp",
+		accentcolor: "#E67D86",
+		name: "Space Lofi Hip-Hop",
+		creditChannel: "https://www.youtube.com/channel/UCyD59CI7beJDU493glZpxgA",
+	},
+	1: {
+		id: "roABNwbjZf4",
+		bg: "./assets/tavern.webp",
+		accentcolor: "#fce9bb",
+		name: "Tavern/Inn Music",
+		creditChannel: "https://www.youtube.com/@relaxationharmony8843",
+	},
+	2: {
+		id: "-9gEgshJUuY",
+		bg: "./assets/japan.webp",
+		accentcolor: "#618779",
+		name: "Japanese Lofi",
+		creditChannel: "https://www.youtube.com/channel/UCyD59CI7beJDU493glZpxgA",
+	},
+	3: {
+		id: "aGSYKFb_zxg",
+		bg: "./assets/goodvibes.jpg",
+		accentcolor: "#c8d881",
+		name: "Good Vibes Only",
+		creditChannel: "https://www.youtube.com/@LTBMusic",
+	},
+	4: {
+		id: "7tNtU5XFwrU",
+		bg: "./assets/ncs.webp",
+		accentcolor: "#D52877",
+		name: "NCS Music",
+		creditChannel: "https://www.youtube.com/@NCSArcade",
+	},
+	5: {
+		id: "6qYTQI8FqzQ",
+		bg: "./assets/cyberpunk.webp",
+		accentcolor: "#344454",
+		name: "Cyberpunk Music",
+		creditChannel: "https://www.youtube.com/@VersusMusicOfficial",
+	},
 };
 
 var player;
@@ -22,7 +58,7 @@ function onYouTubeIframeAPIReady() {
 	player = new YT.Player("player", {
 		height: "390",
 		width: "640",
-		videoId: radios[i],
+		videoId: radios[i].id,
 		playerVars: {
 			controls: 0,
 			autohide: 1,
@@ -38,7 +74,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 // 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
+function onPlayerReady() {
 	player.setVolume(50);
 }
 
@@ -46,48 +82,76 @@ function stopVideo() {
 	player.stopVideo();
 }
 
-window.addEventListener("keydown", handleArrows);
-window.addEventListener("touchstart", handleStart);
-window.addEventListener("touchend", handleEnd);
-
 let isPlaying = false;
 let i = 0;
 let videoData;
 
-const statusTextDesktop = document.querySelector(".desktop");
-const statusTextPhone = document.querySelector(".phone");
-const volume = document.querySelector(".informations__content--volume");
-const controls = document.querySelector(".informations__content--controls");
-const credit = document.querySelector(".informations__content--credit");
 const playerIframe = document.querySelector("iframe");
+const credit = document.querySelector(".credit-channel");
+const radioName = document.querySelector(".currently-playing");
+const goto = document.querySelector(".gotochannel");
+const playpauseButtons = document.querySelectorAll(".play-pause-btn");
 
-function handleArrows(e) {
-	if (e.key === " " && player.playVideo) {
-		StartOrPause();
-	}
+document.addEventListener("keydown", handlePlayKeyboard);
+playpauseButtons.forEach((button) => {
+	button.addEventListener("click", handlePlayClick);
+	button.checked = false;
+});
 
-	if (isPlaying) {
-		if (e.key === "ArrowRight") {
-			goNext();
-		} else if (e.key === "ArrowLeft") {
-			goPrevious();
-		} else if (e.key === "ArrowUp") {
-			player.setVolume(player.getVolume() + 5);
-		} else if (e.key === "ArrowDown") {
-			player.setVolume(player.getVolume() - 5);
+let previousTarget;
+function handlePlayKeyboard(e) {
+	e.preventDefault();
+	if (player.playVideo && e.key === ' ') {
+		const btn = document.getElementById(`${i}`);
+		i = btn.id;
+
+		if (previousTarget !== undefined) {
+			i = previousTarget.id ? previousTarget.id : 0;
+		} else {
+			i = 0;
 		}
 
-		setTimeout(() => {
-			if (player.getPlayerState() !== 2) {
-				volume.innerText = `Volume: ${player.getVolume()}% | Up and Down arrow keys for volume.`;
-			} else {
-				volume.innerText = `Radio paused`;
-			}
-		}, 50);
+		btn.checked = !btn.checked;
+
+		previousTarget = btn;
+		changeAccentColor(i);
+		StartOrPause(i, !btn.checked);
 	}
 }
 
-let initY;
+function handlePlayClick(e) {
+	if (player.playVideo) {
+		i = e.target.id
+			? e.target.id
+			: previousTarget !== undefined
+			? previousTarget.id
+			: 0;
+		const btn = document.getElementById(`${i}`);
+
+		if (e.target !== previousTarget && previousTarget !== undefined) {
+			previousTarget.checked = false;
+		}
+		previousTarget = btn;
+		changeAccentColor(i);
+		StartOrPause(i, !btn.checked);
+	}
+}
+
+function changeAccentColor(id) {
+	const bg = document.querySelector(".cover");
+	const accentCircle = document.querySelector(".accent-circle");
+
+	bg.src = radios[id].bg;
+	accentCircle.style.setProperty("--accent-color", `${radios[id].accentcolor}`);
+
+	document.body.style.setProperty(
+		"--accent-color",
+		`${radios[id].accentcolor}`,
+		"important"
+	);
+}
+
+/* let initY;
 let initX;
 function handleStart(e) {
 	initY = e.touches[0].clientY;
@@ -108,56 +172,31 @@ function handleEnd(e) {
 	} else if (diffX === 0 && diffY === 0) {
 		StartOrPause();
 	}
-}
+} */
 
 function getStatus() {
 	if (player.getPlayerState() === 0) {
 		i === Object.keys(radios).length - 1 ? (i = 0) : i++;
 		player.loadVideoById({
-			videoId: radios[i],
+			videoId: radios[i].id,
 			startSeconds: 0,
 		});
 	} else if (player.getPlayerState() === 1) {
 		videoData = player.getVideoData();
-		console.log(videoData);
-		statusTextDesktop.innerHTML = `Listening - <a href=${player.getVideoUrl()} target='_blank'>${
-			videoData.title
-		}</a>`;
-		statusTextPhone.innerHTML = `Listening - <a href=${player.getVideoUrl()} target='_blank'>${
-			videoData.title
-		}</a>`;
-		controls.innerText = 'You can use your left and right arrow keys to change radios.';
-		credit.innerText = `Credit Music - ${videoData.author}`;
+		radioName.innerText = radios[i].name;
+		credit.innerHTML =
+			videoData.author +
+			`<a href='${radios[i].creditChannel}' target='_blank' class="gotochannel" style='color: ${radios[i].accentcolor}'> / go to channel</a>`;
 	}
 }
 
-function StartOrPause() {
-	if (!isPlaying) {
-		player.playVideo();
-		isPlaying = true;
-		volume.classList.add("box");
-		controls.classList.add('box');
-		credit.classList.add("box");
-	} else {
+function StartOrPause(id, pause) {
+	if (pause) {
 		player.pauseVideo();
-		isPlaying = false;
+	} else {
+		player.loadVideoById({
+			videoId: radios[id].id,
+			startSeconds: 0,
+		});
 	}
-}
-
-function goPrevious() {
-	i === 0 ? (i = Object.keys(radios).length - 1) : i--;
-	player.loadVideoById({
-		videoId: radios[i],
-		startSeconds: 0,
-	});
-	isPlaying = true;
-}
-
-function goNext() {
-	i === Object.keys(radios).length - 1 ? (i = 0) : i++;
-	player.loadVideoById({
-		videoId: radios[i],
-		startSeconds: 0,
-	});
-	isPlaying = true;
 }

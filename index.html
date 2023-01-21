@@ -15,19 +15,25 @@
 </head>
 <body>
     <div class="informations__container">
-        <div class="informations__content--top">
-            <h1 class="informations__content--status desktop box" style="margin-bottom: 1.5vh">Press the spacebar to start</h1>
-            <h1 class="informations__content--status phone box" style="margin-bottom: 1.5vh">Tap your screen to start</h1>
-            <div style='display: flex; align-items: center; gap: 1vh'>
-                <h3 class="informations__content--volume"></h3>
-                <h3 class="informations__content--controls"></h3>
+        <div class="left-box">
+            <h1 class="logo">multi-radios</h1>
+            <img class='cover' src='./assets/space.webp' alt=""></div>
+        <div class="right-box">
+            <div class="accent-circle"></div>
+            <div class='player-actions'>
+                <h3 class="credit-channel"><a class="gotochannel" href=""></a></h3>
+                <h2 class="currently-playing">NO RADIO PLAYING</h2>
+                <div class="radios">
+                    <p><input type="checkbox" id="0" class="play-pause-btn" /> 1 - Space Lofi Hip-Hop Radio</p>
+                    <p><input type="checkbox" id="1" class="play-pause-btn" /> 2 - Tavern/Inn Radio</p>
+                    <p><input type="checkbox" id="2" class="play-pause-btn" /> 3 - Japanese Lofi Radio</p>
+                    <p><input type="checkbox" id="3" class="play-pause-btn" /> 4 - Good Vibes Only Hip-Hop Radio</p>
+                    <p><input type="checkbox" id="4" class="play-pause-btn" /> 5 - NCS Radio</p>
+                    <p><input type="checkbox" id="5" class="play-pause-btn" /> 6 - Cyberpunk Radio</p>
+                </div>
             </div>
         </div>
-        <div class="informations__content--bottom">
-            <h2 class="informations__content--credit"></h2>
-        </div>
     </div>
-    <div class=""></div>
     <div id="player"></div>
 
     <script src="./main.js"></script>
