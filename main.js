@@ -9,48 +9,48 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //    after the API code downloads.
 
 const radios = {
-	0: {
-		id: "Qt0-9mO-ZXY",
-		bg: "./assets/space.webp",
-		accentcolor: "#E67D86",
-		name: "Space Lofi Hip-Hop",
-		creditChannel: "https://www.youtube.com/channel/UCyD59CI7beJDU493glZpxgA",
-	},
-	1: {
-		id: "roABNwbjZf4",
-		bg: "./assets/tavern.webp",
-		accentcolor: "#fce9bb",
-		name: "Tavern/Inn Music",
-		creditChannel: "https://www.youtube.com/@relaxationharmony8843",
-	},
-	2: {
-		id: "-9gEgshJUuY",
-		bg: "./assets/japan.webp",
-		accentcolor: "#618779",
-		name: "Japanese Lofi",
-		creditChannel: "https://www.youtube.com/channel/UCyD59CI7beJDU493glZpxgA",
-	},
-	3: {
-		id: "aGSYKFb_zxg",
-		bg: "./assets/goodvibes.jpg",
-		accentcolor: "#c8d881",
-		name: "Good Vibes Only",
-		creditChannel: "https://www.youtube.com/@LTBMusic",
-	},
-	4: {
-		id: "7tNtU5XFwrU",
-		bg: "./assets/ncs.webp",
-		accentcolor: "#D52877",
-		name: "NCS Music",
-		creditChannel: "https://www.youtube.com/@NCSArcade",
-	},
-	5: {
-		id: "6qYTQI8FqzQ",
-		bg: "./assets/cyberpunk.webp",
-		accentcolor: "#344454",
-		name: "Cyberpunk Music",
-		creditChannel: "https://www.youtube.com/@VersusMusicOfficial",
-	},
+  0: {
+    id: "jfKfPfyJRdk",
+    bg: "./assets/space.webp",
+    accentcolor: "#E67D86",
+    name: "Lofi Girl - relax/study",
+    creditChannel: "https://www.youtube.com/@LofiGirl",
+  },
+  1: {
+    id: "roABNwbjZf4",
+    bg: "./assets/tavern.webp",
+    accentcolor: "#fce9bb",
+    name: "Tavern/Inn Music",
+    creditChannel: "https://www.youtube.com/@relaxationharmony8843",
+  },
+  2: {
+    id: "MVPTGNGiI-4",
+    bg: "./assets/japan.webp",
+    accentcolor: "#618779",
+    name: "Synthwave radio",
+    creditChannel: "https://www.youtube.com/@LofiGirl",
+  },
+  3: {
+    id: "_2sGsqzFXks",
+    bg: "./assets/goodvibes.jpg",
+    accentcolor: "#c8d881",
+    name: "Good Vibes Only",
+    creditChannel: "https://www.youtube.com/@LTBMusic",
+  },
+  4: {
+    id: "7tNtU5XFwrU",
+    bg: "./assets/ncs.webp",
+    accentcolor: "#D52877",
+    name: "NCS Music",
+    creditChannel: "https://www.youtube.com/@NCSArcade",
+  },
+  5: {
+    id: "6qYTQI8FqzQ",
+    bg: "./assets/cyberpunk.webp",
+    accentcolor: "#344454",
+    name: "Cyberpunk Music",
+    creditChannel: "https://www.youtube.com/@VersusMusicOfficial",
+  },
 };
 
 var player;
